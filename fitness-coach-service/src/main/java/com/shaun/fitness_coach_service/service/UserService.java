@@ -3,6 +3,7 @@ package com.shaun.fitness_coach_service.service;
 import com.shaun.fitness_coach_service.entity.User;
 import com.shaun.fitness_coach_service.entity.Video;
 import com.shaun.fitness_coach_service.enums.WorkoutType;
+import com.shaun.fitness_coach_service.exception.CustomerAlreadyExistsException;
 import com.shaun.fitness_coach_service.exception.ResourceNotFoundException;
 import com.shaun.fitness_coach_service.repository.UserRepository;
 import com.shaun.fitness_coach_service.repository.VideoRepository;
@@ -10,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -20,6 +22,13 @@ public class UserService {
     private VideoRepository videoRepository;
 
     public User createUser(User user){
+
+        Optional<User> optionalCustomer = userRepository.getByEmail(user.getEmail());
+        if(optionalCustomer.isPresent()) {
+            throw new CustomerAlreadyExistsException("User already registered with given email "
+                    + user.getEmail());
+        }
+
         return userRepository.save(user);
     }
 
