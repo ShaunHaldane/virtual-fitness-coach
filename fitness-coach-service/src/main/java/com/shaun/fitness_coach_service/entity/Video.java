@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -16,6 +18,8 @@ public class Video {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "Name can not be a null or empty")
+    @Size(min = 5, max = 30, message = "The length of the video name should be between 5 and 30")
     private String name;
     private FitnessLevel fitnessLevel;
     private Weight weight;

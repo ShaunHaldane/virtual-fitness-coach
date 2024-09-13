@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,18 +15,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/admin")
 @RequiredArgsConstructor
+@Validated
 public class AdminController {
 
     private final AdminService adminService;
 
     @PostMapping("/video")
-    private ResponseEntity<Video> createVideo(@Valid @RequestBody Video video){
+    public ResponseEntity<Video> createVideo(@Valid @RequestBody Video video){
         Video savedVideo = adminService.createVideo(video);
         return new ResponseEntity<>(savedVideo, HttpStatus.CREATED);
     }
 
     @PutMapping("/video/{id}")
-    private ResponseEntity<Video> updateVideo(@PathVariable("id") long id, @RequestBody Video video){
+    public ResponseEntity<Video> updateVideo(@Valid @PathVariable("id") long id, @RequestBody Video video){
         Video updatedVideo = adminService.updateVideo(id, video);
         return new ResponseEntity<>(updatedVideo, HttpStatus.CREATED);
     }
