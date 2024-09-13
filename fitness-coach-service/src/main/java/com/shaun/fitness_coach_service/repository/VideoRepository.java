@@ -10,10 +10,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Repository
 public interface VideoRepository extends JpaRepository<Video, Long> {
+
+    Optional<Video> getByName(String name);
 
     @Query("SELECT v FROM Video v " +
             "WHERE v.noEquipment = :noEquipment " +

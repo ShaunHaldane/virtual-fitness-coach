@@ -1,12 +1,14 @@
 package com.shaun.fitness_coach_service.service;
 
 import com.shaun.fitness_coach_service.entity.Video;
+import com.shaun.fitness_coach_service.exception.CustomerAlreadyExistsException;
 import com.shaun.fitness_coach_service.exception.ResourceNotFoundException;
 import com.shaun.fitness_coach_service.repository.VideoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -15,6 +17,13 @@ public class AdminService {
     private VideoRepository videoRepository;
 
     public Video createVideo(Video video){
+
+        Optional<Video> optionalVideo = videoRepository.getByName(video.getName());
+        if(optionalVideo.isPresent()) {
+            throw new CustomerAlreadyExistsException("Video already registered with given name "
+                    + video.getName());
+        }
+
         return videoRepository.save(video);
     }
 
