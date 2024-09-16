@@ -46,7 +46,7 @@ public class UserService {
         _user.setBarbell(user.isBarbell());
         _user.setDumbell(user.isDumbell());
         _user.setNoInjuries(user.isNoInjuries());
-        _user.setBackPain(user.isBackPain());
+        _user.setBackpain(user.isBackpain());
         _user.setKneepain(user.isKneepain());
 
         return userRepository.save(_user);
@@ -76,7 +76,7 @@ public class UserService {
                 user.isBarbell(),
                 user.isDumbell(),
                 user.isNoInjuries(),
-                user.isBackPain(),
+                user.isBackpain(),
                 user.isKneepain(),
                 user.getFitnessLevel(),
                 user.getSex(),
@@ -89,7 +89,7 @@ public class UserService {
                 user.isBarbell(),
                 user.isDumbell(),
                 user.isNoInjuries(),
-                user.isBackPain(),
+                user.isBackpain(),
                 user.isKneepain(),
                 user.getFitnessLevel(),
                 user.getSex(),
@@ -102,7 +102,7 @@ public class UserService {
                 user.isBarbell(),
                 user.isDumbell(),
                 user.isNoInjuries(),
-                user.isBackPain(),
+                user.isBackpain(),
                 user.isKneepain(),
                 user.getFitnessLevel(),
                 user.getSex(),

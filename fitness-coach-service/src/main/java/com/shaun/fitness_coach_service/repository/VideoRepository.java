@@ -23,7 +23,7 @@ public interface VideoRepository extends JpaRepository<Video, Long> {
             "AND v.barbell = :barbell " +
             "AND v.dumbell = :dumbell " +
             "AND v.noInjuries = :noInjuries " +
-            "AND v.backPain = :backPain " +
+            "AND v.backpain = :backpain " +
             "AND v.kneepain = :kneepain " +
             "AND v.fitnessLevel = :fitnessLevel " +
             "AND v.sex = :sex " +
@@ -33,7 +33,7 @@ public interface VideoRepository extends JpaRepository<Video, Long> {
                                         @Param("barbell") boolean barbell,
                                         @Param("dumbell") boolean dumbell,
                                         @Param("noInjuries") boolean noInjuries,
-                                        @Param("backPain") boolean backPain,
+                                        @Param("backpain") boolean backpain,
                                         @Param("kneepain") boolean kneepain,
                                         @Param("fitnessLevel") FitnessLevel fitnessLevel,
                                         @Param("sex") Sex sex,

@@ -42,7 +42,7 @@ public class AdminService {
         _video.setBarbell(video.isBarbell());
         _video.setDumbell(video.isDumbell());
         _video.setNoInjuries(video.isNoInjuries());
-        _video.setBackPain(video.isBackPain());
+        _video.setBackpain(video.isBackpain());
         _video.setKneepain(video.isKneepain());
 
         return videoRepository.save(_video);

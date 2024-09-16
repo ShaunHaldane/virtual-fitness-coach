@@ -30,7 +30,7 @@ public class Video {
 
     // Injuries
     private boolean noInjuries;
-    private boolean backPain;
+    private boolean backpain;
     private boolean kneepain;
 
     // Equipment
